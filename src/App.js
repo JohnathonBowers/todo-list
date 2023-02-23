@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+// I referred to Instructor Calhoun's movie-react repository on GitHub with help constructing some of the elements of this project. 
+
+import Form from "./components/Form";
+import TodoList from "./components/TodoList";
 
 function App() {
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container border border-dark col-sm-10 mt-4">
+      <div className="row my-4 border border-dark">
+        <Form />
+        <TodoList />
+      </div>
     </div>
   );
 }

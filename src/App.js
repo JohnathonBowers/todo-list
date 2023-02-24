@@ -9,8 +9,8 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   
   return (
-    <div className="App container border border-dark col-sm-10 mt-4">
-      <div className="d-flex flex-row m-4 border border-dark">
+    <div className="App container col-sm-10 mt-4">
+      <div className="d-flex flex-row m-4">
         <Form todoList={todoList} setTodoList={setTodoList} />
         <TodoList todoList={todoList} setTodoList={setTodoList}/>
       </div>

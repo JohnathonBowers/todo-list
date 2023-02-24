@@ -4,10 +4,11 @@ const Form = ({todoList, setTodoList}) => {
     
     const [todo, setTodo] = useState({
         task: "",
-        isCompleted: false
+        isCompleted: false,
+        isDeleted: false
     })
 
-    const changeHandler = (e) => {
+    const handleChange = (e) => {
         setTodo({...todo, [e.target.name]: e.target.value});
     }
 
@@ -23,25 +24,27 @@ const Form = ({todoList, setTodoList}) => {
         }
     }
 
-    const submitHandler = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         let isValid = todoValidation();
         if (isValid) {
             setTodoList([...todoList, todo]);
+            console.log("Todo submitted");
             setTodo({
                 task: "",
-                isCompleted: false
+                isCompleted: false,
+                isDeleted: false
             })
         }
     }
     
     return (
         <div className="col-sm-6">
-            <form onSubmit={ submitHandler }>
+            <form onSubmit={ handleSubmit }>
                 <div className="row m-4">
                     <label htmlFor="task" className="col-sm-2 col-form-label">Todo:</label>
                     <div className="col-sm-10">
-                        <input type="text" name="task" className="form-control" onChange={ changeHandler }/>
+                        <input type="text" name="task" className="form-control" onChange={ handleChange } value={todo.task}/>
                         {
                             !todo.task ?
                             <p className="text-danger my-2">Todo must not be empty.</p> :
@@ -50,7 +53,11 @@ const Form = ({todoList, setTodoList}) => {
                     </div>
                 </div>
                 <div className="row m-4 justify-content-end">
-                    <input type="submit" className="btn btn-primary col-sm-2"/>
+                    {
+                        !todo.task ?
+                        <input type="submit" className="btn btn-primary col-sm-2" value="Add" disabled/> :
+                        <input type="submit" className="btn btn-primary col-sm-2" value="Add"/>
+                    }
                 </div>
             </form>
         </div>
